@@ -1,30 +1,61 @@
 'use client'
 
 import { useState } from 'react'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 
-interface MessageInputProps {
-  onSend: (message: string) => void
+type Props = {
+  onSend: (msg: string) => void
+  messages: { role: 'user' | 'assistant'; content: string }[]
 }
 
-export default function MessageInput({ onSend }: MessageInputProps) {
-  const [message, setMessage] = useState('')
+export default function MessageInput({ onSend, messages }: Props) {
+  const [value, setValue] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onSend(message)
-    setMessage('')
+    onSend(value)
+    setValue('')
+  }
+
+  const exportMessages = () => {
+    const blob = new Blob([JSON.stringify(messages, null, 2)], {
+      type: 'application/json'
+    })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'conversa.json'
+    a.click()
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
-      <Input
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder="Digite sua mensagem..."
-      />
-      <Button type="submit">Enviar</Button>
-    </form>
+    <div className="max-w-2xl w-full mx-auto">
+      <form onSubmit={handleSubmit} className="flex items-center gap-2">
+        {/* Botão Exportar */}
+        <button
+          type="button"
+          onClick={exportMessages}
+          className="w-24 min-w-[90px] px-4 py-3 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition"
+          title="Exportar conversa"
+        >
+          Exportar
+        </button>
+
+        {/* Campo de input */}
+        <input
+          className="flex-1 px-4 py-3 rounded-xl bg-zinc-800 text-white placeholder-gray-400 border border-white/10 focus:outline-none focus:ring focus:ring-blue-500/30"
+          placeholder="Digite sua mensagem..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+
+        {/* Botão Enviar */}
+        <button
+          type="submit"
+          className="w-24 min-w-[90px] px-4 py-3 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
   )
 }
