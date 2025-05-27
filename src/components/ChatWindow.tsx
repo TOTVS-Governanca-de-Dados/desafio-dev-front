@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import { Info } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import MessageBubble from './MessageBubble'
 import MessageInput from './MessageInput'
+import { Info } from 'lucide-react'
 
 type Message = {
   role: 'user' | 'assistant'
@@ -16,6 +16,11 @@ export default function ChatWindow() {
   ])
   const [loading, setLoading] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
+  const endOfMessagesRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages, loading])
 
   const sendMessage = async (text: string) => {
     if (!text.trim()) return
@@ -48,6 +53,7 @@ export default function ChatWindow() {
 
   return (
     <div className="flex flex-col flex-1">
+      {/* Header com botão de ajuda */}
       <div className="flex justify-end px-4 pt-4 max-w-2xl mx-auto w-full">
         <button
           onClick={() => setShowHelp(true)}
@@ -58,16 +64,17 @@ export default function ChatWindow() {
         </button>
       </div>
 
-      {/* Mensagens */}
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-10 max-w-2xl mx-auto w-full">
+      {/* Lista de mensagens com espaçamento maior */}
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6 max-w-2xl mx-auto w-full">
         {messages.map((msg, idx) => (
           <MessageBubble key={idx} role={msg.role} content={msg.content} />
         ))}
         {loading && (
-          <div className="text-sm text-gray-400 animate-pulse text-center">
+          <div className="text-sm text-gray-400 animate-pulse text-start">
             Pensando...
           </div>
         )}
+        <div ref={endOfMessagesRef} />
       </div>
 
       {/* Campo de input */}
@@ -82,10 +89,9 @@ export default function ChatWindow() {
             <h2 className="text-lg font-semibold mb-3">Como usar o Chat</h2>
             <ul className="list-disc list-inside text-sm space-y-2 text-gray-300">
               <li>Digite sua pergunta no campo abaixo e clique em <strong>“Enviar”</strong>.</li>
-              <li>Você verá a resposta da IA logo acima.</li>
-              <li>Continue a conversa normalmente com perguntas e respostas.</li>
-              <li>Para exportar a conversa, clique no ícone de <strong>“Exportar”</strong> ao lado do campo de mensagem.</li>
-              <li>Você pode fechar este guia a qualquer momento.</li> 
+              <li>A IA responderá com base nas mensagens anteriores.</li>
+              <li>Você pode fazer perguntas adicionais para continuar a conversa.</li>
+              <li>Use o botão <strong>“Exportar”</strong> para baixar a conversa como um arquivo JSON.</li>
             </ul>
             <div className="text-right mt-4">
               <button
