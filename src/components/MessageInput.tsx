@@ -13,6 +13,7 @@ export default function MessageInput({ onSend, messages }: Props) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!value.trim()) return
     onSend(value)
     setValue('')
   }
@@ -29,30 +30,34 @@ export default function MessageInput({ onSend, messages }: Props) {
   }
 
   return (
-    <div className="max-w-2xl w-full mx-auto">
-      <form onSubmit={handleSubmit} className="flex items-center gap-2">
-        {/* Botão Exportar como ícone */}
+    <div className="w-full max-w-2xl mx-auto px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-wrap items-center gap-2"
+      >
+        {/* Botão Exportar (ícone) */}
         <button
           type="button"
           onClick={exportMessages}
-          className="w-11 h-11 flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 transition"
           title="Exportar conversa"
+          className="p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition flex items-center justify-center"
         >
-          <Upload className="w-4 h-4 text-white" />
+          <Upload className="w-5 h-5" />
         </button>
 
         {/* Campo de input */}
         <input
-          className="flex-1 px-4 py-3 rounded-xl bg-zinc-800 text-white placeholder-gray-400 border border-white/10 focus:outline-none focus:ring focus:ring-blue-500/30"
+          type="text"
           placeholder="Digite sua mensagem..."
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          className="flex-1 min-w-[150px] px-4 py-3 rounded-xl bg-zinc-800 text-white placeholder-gray-400 border border-white/10 focus:outline-none focus:ring focus:ring-blue-500/30"
         />
 
         {/* Botão Enviar */}
         <button
           type="submit"
-          className="w-24 min-w-[90px] px-4 py-3 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition"
+          className="px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition"
         >
           Enviar
         </button>
