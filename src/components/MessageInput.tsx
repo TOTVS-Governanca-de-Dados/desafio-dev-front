@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Upload } from 'lucide-react'
 
 type Props = {
   onSend: (msg: string) => void
@@ -30,14 +31,14 @@ export default function MessageInput({ onSend, messages }: Props) {
   return (
     <div className="max-w-2xl w-full mx-auto">
       <form onSubmit={handleSubmit} className="flex items-center gap-2">
-        {/* Botão Exportar */}
+        {/* Botão Exportar como ícone */}
         <button
           type="button"
           onClick={exportMessages}
-          className="w-24 min-w-[90px] px-4 py-3 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition"
+          className="w-11 h-11 flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 transition"
           title="Exportar conversa"
         >
-          Exportar
+          <Upload className="w-4 h-4 text-white" />
         </button>
 
         {/* Campo de input */}

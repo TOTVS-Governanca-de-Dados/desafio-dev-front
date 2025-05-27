@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Info } from 'lucide-react'
 import MessageBubble from './MessageBubble'
 import MessageInput from './MessageInput'
 
@@ -14,6 +15,7 @@ export default function ChatWindow() {
     { role: 'assistant', content: 'Olá! Como posso te ajudar hoje?' }
   ])
   const [loading, setLoading] = useState(false)
+  const [showHelp, setShowHelp] = useState(false)
 
   const sendMessage = async (text: string) => {
     if (!text.trim()) return
@@ -46,7 +48,17 @@ export default function ChatWindow() {
 
   return (
     <div className="flex flex-col flex-1">
-      {/* Histórico de mensagens */}
+      <div className="flex justify-end px-4 pt-4 max-w-2xl mx-auto w-full">
+        <button
+          onClick={() => setShowHelp(true)}
+          className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 transition"
+          title="Saiba como funciona"
+        >
+          <Info className="w-4 h-4 text-white" />
+        </button>
+      </div>
+
+      {/* Mensagens */}
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-2 max-w-2xl mx-auto w-full">
         {messages.map((msg, idx) => (
           <MessageBubble key={idx} role={msg.role} content={msg.content} />
@@ -58,10 +70,34 @@ export default function ChatWindow() {
         )}
       </div>
 
-      {/* Campo de input com exportação integrada */}
+      {/* Campo de input */}
       <div className="sticky bottom-0 bg-[#121212] px-4 py-4 border-t border-white/10">
         <MessageInput onSend={sendMessage} messages={messages} />
       </div>
+
+      {/* Modal de ajuda */}
+      {showHelp && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-zinc-900 text-white rounded-xl p-6 max-w-md w-full mx-4 shadow-lg border border-white/10">
+            <h2 className="text-lg font-semibold mb-3">Como usar o Chat</h2>
+            <ul className="list-disc list-inside text-sm space-y-2 text-gray-300">
+              <li>Digite sua pergunta no campo abaixo e clique em <strong>“Enviar”</strong>.</li>
+              <li>Você verá a resposta da IA logo acima.</li>
+              <li>Continue a conversa normalmente com perguntas e respostas.</li>
+              <li>Para exportar a conversa, clique no ícone de <strong>“Exportar”</strong> ao lado do campo de mensagem.</li>
+              <li>Você pode fechar este guia a qualquer momento.</li> 
+            </ul>
+            <div className="text-right mt-4">
+              <button
+                onClick={() => setShowHelp(false)}
+                className="text-sm text-blue-400 hover:text-blue-300 transition"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
