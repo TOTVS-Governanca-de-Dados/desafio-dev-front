@@ -1,57 +1,88 @@
-# Desafio Técnico – Desenvolvedor(a) Front React/Next.js - Time de Engenharia de Dados & IA
+# 🤖 Chatbot IA - Desafio Técnico Frontend
 
-## Chatbot de IA Integrado
+Este é um chatbot de inteligência artificial desenvolvido em Next.js + React para o desafio técnico do time de Engenharia de Dados & IA.
 
-
-### 📋 Resumo
-
-Crie uma aplicação web usando **Next.js** e **React** onde o usuário poderá interagir com um chatbot de IA.
-O chatbot deve se conectar a uma **API pública de inteligência artificial** (exemplo: [OpenAI Chat API](https://platform.openai.com/docs/api-reference/chat/create)), processar as mensagens dos usuários e exibir as respostas do modelo.
-
-## Requisitos obrigatórios
-
-* Utilizar **Next.js** (versão 13 ou superior – preferencialmente App Router, mas Pages Router também é aceito).
-* Interface construída em **React**.
-* Tela de chat responsiva e moderna, com histórico de mensagens simples.
-* Integração com uma **API pública de IA** (ex: OpenAI, HuggingFace, etc) para processar mensagens.
-* Controle de estado eficiente para as mensagens do chat.
-* Exibir **loading** enquanto aguarda a resposta da IA.
-* Tratar e exibir mensagens de **erro** retornadas pela API.
-* Código limpo, organizado e com boas práticas:
-
-  * Componentização
-  * Tipagem
-  * Organização de pastas
-* README claro com instruções para rodar o projeto e gerar a chave da API.
-* Uso de biblioteca de componentes (preferencialmente [Shadcn UI](https://ui.shadcn.com/)).
-
-## Diferenciais
-
-* Uso de **TypeScript**.
-* Permitir **exportação do histórico** da conversa (JSON ou TXT).
-* Deploy em **Vercel** (incluir link no README).
-* Utilização de ambiente **.env** para variáveis sensíveis.
-
-## 🚀 Entrega
-
-* **Fork** deste repositório e entrega via **Pull Request**.
-* Incluir no README:
-
-  * Explicação rápida das decisões técnicas.
-  * Instruções de uso (como rodar localmente, gerar chave da API, variáveis necessárias).
-  * Link do deploy no Vercel (se houver).
-* O código será avaliado considerando: arquitetura, clareza, boas práticas, experiência do usuário e criatividade.
-
-## Não menos importante 👇
-
-* Você precisará nos apresentar o seu projeto em uma videoconferência de até 15 minutos. Durante essa apresentação, avaliaremos não apenas as decisões técnicas tomadas, mas também a sua capacidade de comunicação, clareza na explicação, organização do raciocínio e outros aspectos comportamentais importantes para o trabalho em equipe.
-
-## 💡 Dicas
-
-* [Documentação da API do OpenAI Chat](https://platform.openai.com/docs/api-reference/chat/create)
-* Pode usar endpoints gratuitos de outros provedores, desde que explique sua escolha.
-* O design não precisa ser perfeito, mas o mínimo de UX é importante!
+O objetivo é permitir que usuários interajam com um modelo de IA via interface moderna e responsiva, com histórico, loading, tratamento de erros, exportação da conversa e deploy em produção.
 
 ---
 
-Boa sorte! Se tiver dúvidas, fique à vontade para perguntar.
+## ⚙️ Explicação rápida das decisões técnicas
+
+- Utilização do **App Router** do Next.js 13+ para uma arquitetura moderna e escalável.
+- Criação de componentes reutilizáveis (input, mensagens, chat) e organização modular (`components/chat`, `lib`, `types`).
+- Uso da **API do OpenRouter**, compatível com OpenAI, sem custo de uso para testes.
+- Proteção da chave de API via **backend interno** (`/api/chat`), evitando exposição no client.
+- Tipagem com TypeScript e uso de tipos globais para clareza.
+- Interface construída com **Shadcn UI + Tailwind**, garantindo responsividade e boa UX.
+- Exportação da conversa como `.json`, via botão.
+- Código limpo, com controle de loading e tratamento de erros visível para o usuário.
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- [Next.js 13+ (App Router)](https://nextjs.org)
+- [React.js](https://reactjs.org)
+- [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com)
+- [Shadcn UI](https://ui.shadcn.com)
+- API: [OpenRouter](https://openrouter.ai)
+
+---
+
+## 🧠 Como Funciona
+
+- O usuário digita uma pergunta no campo de input.
+- A mensagem é enviada para o backend (`/api/chat`) com o histórico.
+- A API do OpenRouter (GPT-3.5) responde com a resposta da IA.
+- A mensagem é exibida no chat.
+- O histórico pode ser exportado em `.json`.
+
+---
+
+## 🔐 Como Obter a Chave da OpenRouter
+
+1. Acesse: [https://openrouter.ai](https://openrouter.ai)
+2. Faça login e vá em [https://openrouter.ai/keys](https://openrouter.ai/keys)
+3. Clique em “Create key”
+4. No ambiente local, crie o arquivo `.env.local` e adicione: OPENROUTER_API_KEY=sua-chave-aqui
+
+```
+# Clone o repositório
+git clone https://github.com/GabrieldePaula95/chatbot-ia.git
+cd chatbot-ia
+
+# Instale as dependências
+npm install
+
+# Crie o arquivo .env.local com sua chave OpenRouter
+touch .env.local
+# e adicione: OPENROUTER_API_KEY=sua-chave
+
+# Rode o projeto
+npm run dev
+```
+
+📦 Funcionalidades
+✅ Chat com IA integrada (GPT-3.5 via OpenRouter)
+
+✅ Interface moderna com Tailwind + Shadcn UI
+
+✅ Loading de resposta
+
+✅ Tratamento de erros da API
+
+✅ Histórico de mensagens
+
+✅ Exportar conversa em .json
+
+✅ Deploy em produção via Vercel
+
+🌐 Deploy (Vercel)
+Acesse a versão em produção aqui:
+👉 https://chatbot-ia-five.vercel.app
+
+👨‍💻 Autor
+Gabriel de Paula
+github.com/GabrieldePaula95
+
