@@ -1,57 +1,140 @@
-# Desafio Técnico – Desenvolvedor(a) Front React/Next.js - Time de Engenharia de Dados & IA
+# 🤖 Chatbot com Contexto
 
-## Chatbot de IA Integrado
+Um chatbot inteligente construído com Next.js que permite fazer upload de documentos para fornecer contexto às conversas. O sistema utiliza diferentes modelos de IA através da OpenRouter para gerar respostas baseadas no conteúdo dos documentos carregados.
 
+### Link do deploy
 
-### 📋 Resumo
+https://desafio-dev-front-chatbot-ia.vercel.app
 
-Crie uma aplicação web usando **Next.js** e **React** onde o usuário poderá interagir com um chatbot de IA.
-O chatbot deve se conectar a uma **API pública de inteligência artificial** (exemplo: [OpenAI Chat API](https://platform.openai.com/docs/api-reference/chat/create)), processar as mensagens dos usuários e exibir as respostas do modelo.
+## 🚀 Tecnologias Utilizadas
 
-## Requisitos obrigatórios
+- **Next.js 14** - Framework React com App Router
+- **TypeScript** - Tipagem estática para melhor desenvolvimento
+- **Tailwind CSS** - Estilização utilitária
+- **OpenRouter API** - Integração com múltiplos modelos de IA
+- **React Icons** - Ícones para a interface
+- **Radix UI** - Componentes acessíveis
+- **React Markdown** - Renderização de markdown nas respostas
 
-* Utilizar **Next.js** (versão 13 ou superior – preferencialmente App Router, mas Pages Router também é aceito).
-* Interface construída em **React**.
-* Tela de chat responsiva e moderna, com histórico de mensagens simples.
-* Integração com uma **API pública de IA** (ex: OpenAI, HuggingFace, etc) para processar mensagens.
-* Controle de estado eficiente para as mensagens do chat.
-* Exibir **loading** enquanto aguarda a resposta da IA.
-* Tratar e exibir mensagens de **erro** retornadas pela API.
-* Código limpo, organizado e com boas práticas:
+## 🏗️ Decisões Técnicas
 
-  * Componentização
-  * Tipagem
-  * Organização de pastas
-* README claro com instruções para rodar o projeto e gerar a chave da API.
-* Uso de biblioteca de componentes (preferencialmente [Shadcn UI](https://ui.shadcn.com/)).
+### Arquitetura
 
-## Diferenciais
+- **Context API**: Gerenciamento centralizado do estado da aplicação
+- **Custom Hooks**: Separação da lógica de negócio (`useChats`)
+- **Componentes Modulares**: Interface dividida em componentes reutilizáveis
+- **Local Storage**: Persistência de chats e configurações do usuário
 
-* Uso de **TypeScript**.
-* Permitir **exportação do histórico** da conversa (JSON ou TXT).
-* Deploy em **Vercel** (incluir link no README).
-* Utilização de ambiente **.env** para variáveis sensíveis.
+### Funcionalidades Principais
 
-## 🚀 Entrega
+- **Upload de Contexto**: Suporte para arquivos `.md` e `.txt`
+- **Múltiplos Modelos**: Integração com GPT-4o Mini, Mistral, Llama, phi-3 mini 128k
+- **Histórico de Conversas**: Sistema de chats persistente
+- **Exportação**: Funcionalidade para exportar conversas em JSON ou TXT
+- **Interface Responsiva**: Design adaptável para desktop e mobile
 
-* **Fork** deste repositório e entrega via **Pull Request**.
-* Incluir no README:
+### Segurança
 
-  * Explicação rápida das decisões técnicas.
-  * Instruções de uso (como rodar localmente, gerar chave da API, variáveis necessárias).
-  * Link do deploy no Vercel (se houver).
-* O código será avaliado considerando: arquitetura, clareza, boas práticas, experiência do usuário e criatividade.
+- **Variáveis de Ambiente**: Chaves de API protegidas
+- **Validação de Arquivos**: Aceita apenas formatos seguros
+- **Sanitização**: Tratamento seguro do conteúdo dos documentos
 
-## Não menos importante 👇
+## 📋 Pré-requisitos
 
-* Você precisará nos apresentar o seu projeto em uma videoconferência de até 15 minutos. Durante essa apresentação, avaliaremos não apenas as decisões técnicas tomadas, mas também a sua capacidade de comunicação, clareza na explicação, organização do raciocínio e outros aspectos comportamentais importantes para o trabalho em equipe.
+- Node.js 18+
+- npm, yarn ou pnpm
+- Conta na [OpenRouter](https://openrouter.ai/) para obter API key
 
-## 💡 Dicas
+## 🔧 Instalação e Configuração
 
-* [Documentação da API do OpenAI Chat](https://platform.openai.com/docs/api-reference/chat/create)
-* Pode usar endpoints gratuitos de outros provedores, desde que explique sua escolha.
-* O design não precisa ser perfeito, mas o mínimo de UX é importante!
+### 1. Clone o repositório
 
----
+```bash
+git clone <https://github.com/WesleyBert/app.git>
+cd desafio-dev-front
+```
 
-Boa sorte! Se tiver dúvidas, fique à vontade para perguntar.
+### 2. Instale as dependências
+
+```bash
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+```
+
+### 3. Configure as variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto:
+
+```env
+NEXT_PUBLIC_API_KEY=sua_chave_api_aqui
+```
+
+### 4. Obtenha sua API Key
+
+1. Acesse [OpenRouter](https://openrouter.ai/)
+2. Crie uma conta ou faça login
+3. Vá para "API Keys" no dashboard
+4. Crie uma nova chave de API
+5. Copie a chave e cole no arquivo `.env`
+
+### 5. Execute o projeto
+
+```bash
+npm run dev
+```
+
+Acesse [http://localhost:3000](http://localhost:3000) para ver a aplicação.
+
+## 🎯 Como Usar
+
+### Upload de Documento de Contexto
+
+1. Clique em "Upload Document" na sidebar
+2. Selecione um arquivo `.md` ou `.txt`
+3. O documento será carregado e usado como contexto
+4. Faça perguntas relacionadas ao conteúdo do documento
+
+### Seleção de Modelo de IA
+
+1. Clique no seletor de modelo na sidebar
+2. Escolha entre os modelos disponíveis:
+   - GPT-4o Mini (OpenAI)
+   - Mistral 7B Instruct (Mistral AI)
+   - Llama 3.1 8B Instruct (Meta)
+   - Phi-3 Mini 128K (Microsoft)
+
+### Gerenciamento de Conversas
+
+- **Nova Conversa**: Clique no ícone "+" na sidebar
+- **Trocar Conversa**: Clique em qualquer conversa na lista
+- **Excluir Conversa**: Use o menu de três pontos
+- **Exportar**: Exporte conversas em JSON ou TXT
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── app/                 # App Router do Next.js
+├── components/          # Componentes React
+│   ├── ui/             # Componentes base (Radix UI)
+│   └── ...             # Componentes específicos
+├── contexts/           # Context API
+├── hooks/              # Custom hooks
+├── lib/                # Utilitários e configurações
+├── types/              # Definições TypeScript
+└── constants/          # Constantes da aplicação
+```
+
+## 🔧 Scripts Disponíveis
+
+```bash
+npm run dev          # Desenvolvimento local
+npm run build        # Build de produção
+npm run start        # Servidor de produção
+npm run lint         # Verificação de código
+```
+
+Desenvolvido usando Next.js e OpenRouter
