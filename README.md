@@ -1,57 +1,109 @@
-# Desafio Técnico – Desenvolvedor(a) Front React/Next.js - Time de Engenharia de Dados & IA
+<h1 align="center" id="top"> OurChatBot</h1>
 
-## Chatbot de IA Integrado
+<img src="https://github.com/user-attachments/assets/3a2620c1-6a5d-4b58-8137-05ecac5d8be9" width='100%' alt="Imagem 1"/>
+ 
+
+> 🔎 Chat Bot, <a href="https://desafio-dev-front-f191e79f8-guimonteirojbvs-projects.vercel.app/" target="blank"> Link do projeto </a>
+
+## :page_facing_up: Desafio Técnico: ChatBot
+
+**Visão Geral**:
+Este desafio tem como objetivo testar as minhas habilidades com Next, TypeScript, e muito mais para a vaga de Desenvolvedor Front-end Jr.
+
+**Requisitos Funcionais**:
+• Ao acessar a página inicial é possível interagir com o ChatBot
+• Ao enviar a mensagem para o chat. receber uma resposta
+• Ao clicar no botão "Limpar conversa", deve-se limpar o chat.
+• Ao clicar no botão de download é possível baixar o histórico da conversa
+  
+## 🎯 Steps
+
+**Configuração Inicial**:
+
+- Inicializei o projeto utilizando NextJs, TypeScript, ShadCn e tailwind para uma base sólida e eficiente.
+
+**Estrutura :**
+
+- Criei uma estrutura organizada para facilitar a manutenção e escalabilidade do projeto.
+- Dividi as pastas principais em **components, contexts, services, actions, app, providers**.
+
+Este é um breve guia sobre a estrutura de pastas do projeto. Aqui está uma visão geral das pastas principais:
+
+- **App**: Aqui é onde estão as rotas da aplicação.
+
+- **components**: Aqui estão localizados os componentes reutilizáveis do React, que são unidades independentes de interface do usuário. 
+
+- **contexts**: Utilizamos a Context API do React para gerenciar o estado global da aplicação. Este diretório é o hub central para o compartilhamento de dados entre componentes.
+
+- **services**: Este diretório agrupa partes relacionadas à integração com a API, como a criação de baseUrl.
+
+- **actions**: Aqui ficam os arquivos de ações que vão ser utilizadas no lado servidor da aplicação.
+
+- **errors**: Este diretório são os arquivos para tratamentos de erros.
+
+- **providers**: Aqui é onde crio os componentes de providers dos contextos da aplicação.
+
+**Implementação Inicial:**
+
+- Na raiz do projeto, construi um aplicação funcional, para que depois eu pudesse refatorar.
+- Minha ideia nesse projeto foi usar o mínimo de bibliotecas possíveis, tive como objetivo fazer a maioria das coisas na mão.
+- Organizei as operações iniciais e a estrutura funcional.
+
+**Refatoração e Organização:**
+
+- Refatorei o código inicial,adicionando componentes reutilizáveis.
+- Crie a integração com a api seguindo os conceitos de inversão de dependência para maior desacoplamento.
+
+**Contexto:**
+
+- Criei um contexto nas pasta contexts para gerenciar o histórico do chat e interagir com o botão de limpar conversa no header da aplicação.
+
+**Estilização Responsiva:**
+
+- Utilizando o tailwind e shadCn para componentes prontos, criei um design responsivo.
+
+**Aprimoramentos Adicionais:**
+
+- Adicionei recursos como um componente de loading para indicar carregamento de dados.
 
 
-### 📋 Resumo
+## 📁 Screens Mobile
 
-Crie uma aplicação web usando **Next.js** e **React** onde o usuário poderá interagir com um chatbot de IA.
-O chatbot deve se conectar a uma **API pública de inteligência artificial** (exemplo: [OpenAI Chat API](https://platform.openai.com/docs/api-reference/chat/create)), processar as mensagens dos usuários e exibir as respostas do modelo.
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/85263e08-f833-42ee-a700-704fa271255a" width='100%' max-heigth='100px' alt="Imagem 1"/>
+</div>
 
-## Requisitos obrigatórios
+## 📁 Screens Desktop
+<div style="display: flex; justify-content: space-between;">
+ <img src="https://github.com/user-attachments/assets/38e9f6e4-cd84-4b4f-896f-006edabb3eb1" width='100%' alt="Imagem 1"/>
+</div>
 
-* Utilizar **Next.js** (versão 13 ou superior – preferencialmente App Router, mas Pages Router também é aceito).
-* Interface construída em **React**.
-* Tela de chat responsiva e moderna, com histórico de mensagens simples.
-* Integração com uma **API pública de IA** (ex: OpenAI, HuggingFace, etc) para processar mensagens.
-* Controle de estado eficiente para as mensagens do chat.
-* Exibir **loading** enquanto aguarda a resposta da IA.
-* Tratar e exibir mensagens de **erro** retornadas pela API.
-* Código limpo, organizado e com boas práticas:
 
-  * Componentização
-  * Tipagem
-  * Organização de pastas
-* README claro com instruções para rodar o projeto e gerar a chave da API.
-* Uso de biblioteca de componentes (preferencialmente [Shadcn UI](https://ui.shadcn.com/)).
+## 🔗 Links
+| Ambiente     |  URL                             |
+| ---          |  ---                             |
+| Local        |  http://localhost:3000/         |                 
+| Prod         | https://desafio-dev-front-f191e79f8-guimonteirojbvs-projects.vercel.app/ |
 
-## Diferenciais
 
-* Uso de **TypeScript**.
-* Permitir **exportação do histórico** da conversa (JSON ou TXT).
-* Deploy em **Vercel** (incluir link no README).
-* Utilização de ambiente **.env** para variáveis sensíveis.
+## :white_check_mark: Requerimentos
 
-## 🚀 Entrega
+Antes de iniciar :checkered_flag:, você precisa ter o [Git](https://git-scm.com) e o [Node](https://nodejs.org/en/) instalados.
+Você também precisa criar um arquivo .env na raíz do projeto utilizando como referência o arquivo .env.example, após isso crie um Acess Token no Huggin Face [HugginFace acess token](https://huggingface.co/settings/tokens) e use esse acess token como valor para HF_API_TOKEN. 
 
-* **Fork** deste repositório e entrega via **Pull Request**.
-* Incluir no README:
+## :checkered_flag: Iniciar
 
-  * Explicação rápida das decisões técnicas.
-  * Instruções de uso (como rodar localmente, gerar chave da API, variáveis necessárias).
-  * Link do deploy no Vercel (se houver).
-* O código será avaliado considerando: arquitetura, clareza, boas práticas, experiência do usuário e criatividade.
+```
+#  Clone este projeto
+$ git clone https://github.com/Guimonteirojbv/out-chat-bot.git
 
-## Não menos importante 👇
+# Acessar
+$ cd out-chat-bot
 
-* Você precisará nos apresentar o seu projeto em uma videoconferência de até 15 minutos. Durante essa apresentação, avaliaremos não apenas as decisões técnicas tomadas, mas também a sua capacidade de comunicação, clareza na explicação, organização do raciocínio e outros aspectos comportamentais importantes para o trabalho em equipe.
+# Instalar dependências
+$ npm i
 
-## 💡 Dicas
-
-* [Documentação da API do OpenAI Chat](https://platform.openai.com/docs/api-reference/chat/create)
-* Pode usar endpoints gratuitos de outros provedores, desde que explique sua escolha.
-* O design não precisa ser perfeito, mas o mínimo de UX é importante!
-
----
-
-Boa sorte! Se tiver dúvidas, fique à vontade para perguntar.
+# Execute o projeto
+$ npm run dev
+# O servidor será inicializado em http://localhost:3000
+``
