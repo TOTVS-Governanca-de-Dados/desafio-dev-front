@@ -3,7 +3,7 @@
 <img src="https://github.com/user-attachments/assets/3a2620c1-6a5d-4b58-8137-05ecac5d8be9" width='100%' alt="Imagem 1"/>
  
 
-> 🔎 Chat Bot, <a href="https://out-chat-hmbntk1ki-guimonteirojbvs-projects.vercel.app/" target="blank"> Link do projeto </a>
+> 🔎 Chat Bot, <a href="https://desafio-dev-front-f191e79f8-guimonteirojbvs-projects.vercel.app/" target="blank"> Link do projeto </a>
 
 ## :page_facing_up: Desafio Técnico: ChatBot
 
@@ -83,7 +83,7 @@ Este é um breve guia sobre a estrutura de pastas do projeto. Aqui está uma vis
 | Ambiente     |  URL                             |
 | ---          |  ---                             |
 | Local        |  http://localhost:3000/         |                 
-| Prod         | https://our-chat-bot-gui.vercel.app/ |
+| Prod         | https://desafio-dev-front-f191e79f8-guimonteirojbvs-projects.vercel.app/ |
 
 
 ## :white_check_mark: Requerimentos
